@@ -1,12 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>vktrchrn</title>
+    <style>
+        body {
+            background-color: #000;
+            margin: 0;
+        }
+
+        .background-img {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: fixed;
+            z-index: 0;
+            display: none;
+            width: 100%;
+            height: 130%;
+            transform: translate(0, -30px);
+
+            animation: fade 2s;
+        }
+
+        .top-right {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        #preloader {
+            border: 5px solid #f3f3f3;
+            /* Light grey */
+            border-top: 5px solid #3498db;
+            /* Blue */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            position: absolute;
+            z-index: 100;
+
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes fade {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    hello world
+    <div id="preloader"></div>
+    <script>
+
+        const img = document.createElement('img');
+        img.classList.add('background-img');
+        const imgUrl = 'https://cdn.discordapp.com/attachments/1075524531046854656/1077143928668684348/video.gif';
+
+        // Set the src attribute of the image element to the image URL
+        img.src = imgUrl;
+        img.onload = () => {
+            img.style.display = 'block';
+            document.getElementById('preloader').style.display = 'none';
+        }
+        // Add the image element to the HTML document
+        document.body.appendChild(img);
+
+        // const preloader = document.getElementById('preloader');
+
+
+        // window.addEventListener('load', () => {
+        //     preloader.style.display = 'none';
+        //     document.body.style.display = 'block'
+        //     console.log('loaded');
+        // });
+    </script>
 </body>
+
 </html>
